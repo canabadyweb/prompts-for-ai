@@ -1,0 +1,47 @@
+I am running Elementary OS on a 1TB Toshiba HDD (TOSHIBA HDWJ110). Recently, my system started showing severe disk-related issues.
+
+Initial symptoms:
+
+* Terminal commands like `ls` failed with: "Input/Output Error"
+* Basic utilities (e.g., `cut`) appeared missing, likely due to unreadable filesystem sectors
+* On reboot, the system dropped into initramfs
+
+Recovery attempt:
+
+* Ran `fsck /dev/sda3 -y`
+* System booted successfully afterward
+
+Current issue:
+
+* HDD activity LED is constantly active (continuous blinking), even during idle
+* System feels unstable with possible background disk retries
+
+SMART diagnostics (key values):
+
+* Reallocated Sector Count: 288
+* Current Pending Sectors: 8
+* UDMA CRC Errors: 48
+* Power-On Hours: ~27,467
+* G-Sense Errors: 12,084
+
+Context:
+
+* The system previously encountered filesystem corruption severe enough to prevent boot
+* fsck repaired the filesystem, but underlying hardware degradation is suspected
+* Disk is a 5400 RPM mechanical drive with several years of usage
+
+Questions / Goals:
+
+1. Interpret the SMART data in terms of actual disk health and failure stage
+2. Explain why the disk LED is constantly active after recovery
+3. Assess risk of imminent data loss
+4. Recommend immediate and long-term actions (backup strategy, diagnostics, replacement)
+5. Clarify whether further repair attempts are meaningful or if replacement is mandatory
+
+Constraints:
+
+* System is currently usable but unreliable
+* Data preservation is critical
+* Prefer minimal downtime if migration is required
+
+I want a precise, technically grounded assessment without generic advice.
